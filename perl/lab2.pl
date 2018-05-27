@@ -1,24 +1,18 @@
 use 5.20.0;
 use strict; 
-use warnings FATAL => "all";
 do './Query.pm';
 
-say "OW HELO";
-
-#say <C:/Users/Morgan/Desktop/perlLabs/*.log>;
-
-
-sub DoubleSlash
+sub SlashSlash
 {
 	my $obj = shift;
-	if ($obj->{HTTPQuery} =~ / \/\//)
+	if ($obj->{QueryHHTP} =~ / \/\/ /)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub FromNowhere
+sub BackToGodhead
 {
 	my $obj = shift;
 	if ($obj->{UserAgent} eq "-")
@@ -28,17 +22,17 @@ sub FromNowhere
 	return 0;
 }
 
-sub HexChars
+sub EtoHex
 {
 	my $obj = shift;
-	if (($obj->{HTTPQuery} =~ /\\x[0-9A-F]/g) or ($obj->{Reference} =~ /\\x[0-9A-F]/g))
+	if (($obj->{QueryHHTP} =~ /\\x[0-9A-F]/g) or ($obj->{Reference} =~ /\\x[0-9A-F]/g))
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub DontSmilePls
+sub QuQu
 {
 	my $obj = shift;
 	my @q = split "", $obj->{Original};
@@ -62,70 +56,70 @@ sub DontSmilePls
 	return 0;
 }
 
-sub TakeMyMain
+sub MainPhp
 {
 	my $obj = shift;
-	if ($obj->{HTTPQuery} =~ /main\.php/)
+	if ($obj->{QueryHHTP} =~ /main\.php/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub BeAdmin
+sub AdminRights
 {
 	my $obj = shift;
-	if (lc $obj->{HTTPQuery} =~ /admin[^a-zA-Z]/)
+	if (lc $obj->{QueryHHTP} =~ /admin[^a-zA-Z]/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub SetupMe
+sub PhpSetup
 {
 	my $obj = shift;
-	if (lc $obj->{HTTPQuery} =~ /setup\.php/)
+	if (lc $obj->{QueryHHTP} =~ /setup\.php/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub NoSQLPls
+sub NoSQL
 {
 	my $obj = shift;
-	if (lc $obj->{HTTPQuery} =~ /sql/)
+	if (lc $obj->{QueryHHTP} =~ /sql/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub COOKIEOMNOMNOM
+sub CookieQuery
 {
 	my $obj = shift;
-	if ($obj->{HTTPQuery} =~ /cookie/)
+	if ($obj->{QueryHHTP} =~ /cookie/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub StrangeChars
+sub Symbols
 {
 	my $obj = shift;
-	if ($obj->{HTTPQuery} =~ /[,$~]+/)
+	if ($obj->{QueryHHTP} =~ /[,$~]+/)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-sub YouSoEmpty
+sub BlackHole
 {
 	my $obj = shift;
-	if ($obj->{HTTPQuery} eq "")
+	if ($obj->{QueryHHTP} eq "")
 	{
 		return 1;
 	}
@@ -138,90 +132,90 @@ sub CheckQuery
 	my %ranks = %{shift()};
 	
 	
-	if (DoubleSlash $obj)
+	if (SlashSlash $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "DoubleSlash";
-		$obj->{Rank} += $ranks{"DoubleSlash"};
+		push @{$obj->{ListOfAttributes}}, "SlashSlash";
+		$obj->{Rank} += $ranks{"SlashSlash"};
 	}
 	
-	if (FromNowhere $obj)
+	if (BackToGodhead $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "FromNowhere";
-		$obj->{Rank} += $ranks{"FromNowhere"};
+		push @{$obj->{ListOfAttributes}}, "BackToGodhead";
+		$obj->{Rank} += $ranks{"BackToGodhead"};
 	}
 	
-	if (HexChars $obj)
+	if (EtoHex $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "HexChars";
-		$obj->{Rank} += $ranks{"HexChars"};
+		push @{$obj->{ListOfAttributes}}, "EtoHex";
+		$obj->{Rank} += $ranks{"EtoHex"};
 	}
 	
-	if (DontSmilePls $obj)
+	if (QuQu $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "DontSmilePls";
-		$obj->{Rank} += $ranks{"DontSmilePls"};
+		push @{$obj->{ListOfAttributes}}, "QuQu";
+		$obj->{Rank} += $ranks{"QuQu"};
 	}
 	
-	if (TakeMyMain $obj)
+	if (MainPhp $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "TakeMyMain";
-		$obj->{Rank} += $ranks{"TakeMyMain"};
+		push @{$obj->{ListOfAttributes}}, "MainPhp";
+		$obj->{Rank} += $ranks{"MainPhp"};
 	}
 	
-	if (BeAdmin $obj)
+	if (AdminRights $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "BeAdmin";
-		$obj->{Rank} += $ranks{"BeAdmin"};
+		push @{$obj->{ListOfAttributes}}, "AdminRights";
+		$obj->{Rank} += $ranks{"AdminRights"};
 	}
 	
-	if (SetupMe $obj)
+	if (PhpSetup $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "SetupMe";
-		$obj->{Rank} += $ranks{"SetupMe"};
+		push @{$obj->{ListOfAttributes}}, "PhpSetup";
+		$obj->{Rank} += $ranks{"PhpSetup"};
 	}
 	
-	if (NoSQLPls $obj)
+	if (NoSQL $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "NoSQLPls";
-		$obj->{Rank} += $ranks{"NoSQLPls"};
+		push @{$obj->{ListOfAttributes}}, "NoSQL";
+		$obj->{Rank} += $ranks{"NoSQL"};
 	}
 	
-	if (COOKIEOMNOMNOM $obj)
+	if (CookieQuery $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "COOKIEOMNOMNOM";
-		$obj->{Rank} += $ranks{"COOKIEOMNOMNOM"};
+		push @{$obj->{ListOfAttributes}}, "CookieQuery";
+		$obj->{Rank} += $ranks{"CookieQuery"};
 	}
 	
-	if (StrangeChars $obj)
+	if (Symbols $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "StrangeChars";
-		$obj->{Rank} += $ranks{"StrangeChars"};
+		push @{$obj->{ListOfAttributes}}, "Symbols";
+		$obj->{Rank} += $ranks{"Symbols"};
 	}
 	
-	if (YouSoEmpty $obj)
+	if (BlackHole $obj)
 	{
-		push @{$obj->{ListOfAttributes}}, "YouSoEmpty";
-		$obj->{Rank} += $ranks{"YouSoEmpty"};
+		push @{$obj->{ListOfAttributes}}, "BlackHole";
+		$obj->{Rank} += $ranks{"BlackHole"};
 	}
 }
 
 my %Ranks = (
-			'BeAdmin' => 6,
-			'COOKIEOMNOMNOM' => 7,
-			'DontSmilePls' => 10,
-			'DoubleSlash' => 2,
-			'FromNowhere' => 11,
-			'HexChars' => 9,
-			'NoSQLPls' => 5,
-			'SetupMe' => 3,
-			'StrangeChars' => 8,
-			'TakeMyMain' => 4,
-			'YouSoEmpty' => 1,
+			'AdminRights' => 6,
+			'CookieQuery' => 7,
+			'QuQu' => 10,
+			'SlashSlash' => 2,
+			'BackToGodhead' => 11,
+			'EtoHex' => 9,
+			'NoSQL' => 5,
+			'PhpSetup' => 3,
+			'Symbols' => 8,
+			'MainPhp' => 4,
+			'BlackHole' => 1,
 );
 
 
 
-my @filelist = <C:/Users/Morgan/Desktop/perlLabs/*.log*>;
+my @filelist = <access.log>;
 
 my @loglist;
 
@@ -260,7 +254,7 @@ foreach my $file (@loglist)
 	}
 	else
 	{
-		say "CANT OPEN $file";
+		say "CANT OPEN - ALLAH AKBAR $file";
 	}
 }
 
@@ -285,10 +279,10 @@ my @sortedsuspect = sort{$a->{Rank} <=> $b->{Rank}} @suspect;
 
 for (my $i = 1; $i < 51; $i++)
 {
-	say "$i";
+	say "oh my GODs $i";
 	$sortedsuspect[-$i]->PrintAll;
 }
 
-say "I SAID GOOD DAY SIR";
+say "Thank you for attention - OM NOM NOM";
 
 
